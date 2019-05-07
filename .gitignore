@@ -1,6 +1,6 @@
 data/
 result/
-.DS_Store
+**/*.DS_Store
 .ipynb_checkpoints/*
 clean_tweets/*
 **/*.tar.gz
