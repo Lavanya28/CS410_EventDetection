@@ -1,22 +1,55 @@
 import React, { Component } from 'react';
 
+import api from '../../api';
+
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hashtags: [],
+    }
+  }
+
+  getHashtags = () => {
+    api.getHashtags()
+      .then(response => {
+        this.setState({ hashtags: response.data });
+      });
+  };
+
   render() {
+    const { hashtags } = this.state;
+
     return (
       <div
         className="Navigation"
       >
-        <form>
-          <button name="top" value="Top trending hashtags">Top trending hashtags</button>
-          <button name="top" value="Top trending words">Top trending words</button>
-          <button name="top" value="Top trending word-pairs">Top trending word-pairs</button>
-          <select value="Select a Year">
-            <option id="2016" value="2016">2016</option>
-            <option id="2017" value="2017">2017</option>
-            <option id="2018" value="2018">2018</option>
-            <option id="2019" value="2019">2019</option>
-          </select>
-        </form>
+        <div className="Navigation-buttons">
+          <button
+            type="button"
+            onClick={this.getHashtags}
+          >
+            Top trending hashtags
+          </button>
+          <button
+            type="button"
+          >
+            Top trending word
+          </button>
+          <button
+            type="button"
+          >
+            Top trending word-pairs
+          </button>
+        </div>
+        <div className="Navigation-options">
+          {hashtags.map((hashtag, idx) => (
+            <div id={idx}>
+              {hashtag[0]}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
