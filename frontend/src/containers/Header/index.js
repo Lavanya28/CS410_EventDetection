@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import './styles.scss';
 
 class Header extends Component {
   render() {
     return (
-      <div
-        className="Header"
-      >
-        Trends in Fashion Data
-      </div>
+        <div className="Header mainHeader">
+            <span className="header1">Trends in Fashion Tweets</span>
+        </div>
     );
   }
 }

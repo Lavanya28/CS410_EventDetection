@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'semantic-ui-css/semantic.min.css';
 
 import Header from '../Header/';
 import Navigation from '../Navigation/';
