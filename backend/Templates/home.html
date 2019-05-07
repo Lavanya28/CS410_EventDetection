@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Trends in Fashion Data</title>
+  </head>
+  <body >
+  	<script type="text/javascript">
+			function onbuttonclick(){
+			var res = '{{ result }}'
+			for elements in res{
+				var btn = document.createElement("BUTTON");
+				var text = document.createTextNode(elements[0]);
+				btn.appendChild(t);
+				document.body.appendChild(btn);
+
+			}
+
+			}
+		</script>
+
+    <h1>Trends in Fashion Data </h1>
+
+    <form action="{{ url_for('home') }}" method="post" >
+    	<button type="submit" name="top" value = "Top trending Hastags" onclick="onbuttonclick()"> Top trending Hastags </button >
+    	<button type="submit" name="top" value = "Top trending words"> Top trending Words </button >
+    	<button type="submit" name="top" value = "Top trending word-pairs"> Top trending Word-pairs </button >
+
+    <select value = "Select a Year">
+	  <option id= "2016" value="2016">2016</option>
+	  <option id= "2017" value="2017">2017</option>
+	  <option id= "2018" value="2018">2018</option>
+	  <option id= "2019" value="2019">2019</option>
+	</select>
+
+	<p> {{result}}</p>
+
+    </form>
+  </body>
+</html>
