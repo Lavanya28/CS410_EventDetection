@@ -32,8 +32,6 @@ def read_csv(filename):
 def get_plot(path, value):
     data = pd.read_pickle(path)
 
-    print(data)
-
     x_ticks = list(data.columns)
     x_ticks_dates = [str(d).split(" ")[0] for d in x_ticks]
 
@@ -76,7 +74,8 @@ def create_plot(value, x_ticks_dates,y,result):
     plt.step(x_ticks_dates, result["signals"], color="red", lw=2)
     plt.ylim(-1.5, 1.5)
     plt.gcf().autofmt_xdate()
-    plt.savefig(value + '.png')
+    #plt.savefig(value + '.png')
+    plt.savefig("../frontend/public/fash.png")
     plt.close()
     return 
 

@@ -13,7 +13,8 @@ class Navigation extends Component {
     this.state = {
       hashtags: [],
       dates: [],
-      startDate: new Date('Feburary 7, 2019')
+      startDate: new Date('Feburary 7, 2019'),
+      time: "2016",
     }
   }
 
@@ -34,6 +35,12 @@ class Navigation extends Component {
       startDate: date
     });
     console.log("testing date", date)
+  }
+
+  handleChangeTime = (e, data) => {
+    const { value } = data;
+
+    this.setState({ time: value });
   }
 
   getHashtags = () => {
@@ -83,6 +90,7 @@ class Navigation extends Component {
       hashtags,
       dates,
       activeItem,
+      time,
     } = this.state;
     const { selection } = this.props;
 
@@ -96,6 +104,8 @@ class Navigation extends Component {
                openOnFocus
                inline
                options={yearOptions}
+               value={time}
+               onChange={this.handleChangeTime}
              />
         </React.Fragment>
         <Header  className="mainHeader"  size= "small">Top 50 Trending</Header>
@@ -120,7 +130,7 @@ class Navigation extends Component {
             <Button
               className="resultButton"
               key={idx} size='mini' inverted color='grey'
-              onClick={this.postPlots}
+              onClick={() => this.postPlots(hashtag[0])}
             >
               {hashtag[0]}
             </Button>
