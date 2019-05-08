@@ -18,7 +18,7 @@ def csv_reader(filename):
     result = {}
     for row in reader:
         key = row[0]
-        result[key] = int(row[1])
+        result[key] = int(float(row[1]))
     sorted_result = sorted(result.items(), key=operator.itemgetter(1))
     sorted_result = sorted_result[::-1]
 
@@ -51,10 +51,10 @@ def create_plot(value, x_ticks_dates,y,result):
     plt.plot(x_ticks_dates, y)
     plt.plot(x_ticks_dates,
                result["avgFilter"], color="cyan", lw=2)
-    plt.plot(x_ticks_dates,
-               result["avgFilter"] + threshold * result["stdFilter"], color="green", lw=2)
-    plt.plot(x_ticks_dates,
-               result["avgFilter"] - threshold * result["stdFilter"], color="green", lw=2)
+    # plt.plot(x_ticks_dates,
+    #            result["avgFilter"] + threshold * result["stdFilter"], color="green", lw=2)
+    # plt.plot(x_ticks_dates,
+    #            result["avgFilter"] - threshold * result["stdFilter"], color="green", lw=2)
     plt.gcf().autofmt_xdate()
     
     dates = {}
