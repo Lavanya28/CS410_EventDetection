@@ -13,8 +13,6 @@ class App extends Component {
     this.state = {
       selection: ""
     }
-
-    // this.handleData = this.handleData.bind(this);
   }
 
   addStateToParent = (name) => {

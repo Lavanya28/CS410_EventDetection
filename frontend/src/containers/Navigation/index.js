@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Segment,Header,Dropdown,Menu, Divider } from 'semantic-ui-react'
-import './styles.scss';
+import { Segment, Header, Dropdown, Menu, Divider } from 'semantic-ui-react'
+
 import api from '../../api';
+import './styles.scss';
 
 const yearOptions = [
   {
@@ -77,8 +78,8 @@ class Navigation extends Component {
             </React.Fragment>
         </div>
         <Header size= "small">Top 50 Trending</Header>
-        <Menu className="contentMenu"compact size='mini'>
-          <Menu.Item className="contentMenuItem"name='unigrams' 
+        <Menu className="contentMenu" widths={3} compact size='mini'>
+          <Menu.Item name='unigrams' 
                      active={activeItem === 'unigrams'} 
                      onClick={this.handleItemClick} 
           />

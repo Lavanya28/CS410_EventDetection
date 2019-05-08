@@ -69,6 +69,18 @@ def plotter(value, x_ticks_dates,y,result):
                result["avgFilter"] - threshold * result["stdFilter"], color="green", lw=2)
     plt.gcf().autofmt_xdate()
     
+    dates = {}
+    for i in range(len(x_ticks_dates)):
+        year, month, day = x_ticks_dates[i].split("-")
+
+        if year not in dates:
+            dates[year] = {}
+
+        if month in dates[year]:
+            x_ticks_dates[i] = ""
+        else:
+            x_ticks_dates[i] = "{}, {}".format(month, year)
+            dates[year][month] = 1
     
     plt.subplot(212)
     plt.step(x_ticks_dates, result["signals"], color="red", lw=2)
@@ -87,19 +99,19 @@ def check_datapoint(date='2016', value="#fash", tag="hashtag"):
             #data = pd.read_pickle('hashtags_matrix_2016.pkl')
             data = pd.read_pickle('./files/2016/hashtags_2016.pkl')
             x_ticks = list(data.columns)
-            print(x_ticks)
-            """
-            x_ticks_dates = [dt.datetime.strptime(d,'%Y-%m-%d').date() for d in x_ticks]
+            x_ticks_dates = [str(d).split(" ")[0] for d in x_ticks]
+
+
+            #print(x_ticks)
+            #x_ticks_dates = [dt.datetime.strptime(str(d).split(" ")[0],'%Y-%m-%d').date() for d in x_ticks]
+            #print(x_ticks_dates)
             y= np.array(data.loc[value,:])
             lag = 15
             threshold = 4
             influence = 0.5
             result = thresholding_algo(y, lag=lag, threshold=threshold, influence=influence)
             
-            
             plotter(value, x_ticks_dates,y,result)
-            """
-            
             
             return
     # write more date conditions here 
