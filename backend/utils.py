@@ -29,8 +29,11 @@ def read_csv(filename):
 
     return df
 
-def get_plot(path):
+def get_plot(path, value):
     data = pd.read_pickle(path)
+
+    print(data)
+
     x_ticks = list(data.columns)
     x_ticks_dates = [str(d).split(" ")[0] for d in x_ticks]
 

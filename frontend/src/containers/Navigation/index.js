@@ -2,36 +2,9 @@ import React, { Component } from 'react';
 import { Segment, Header, Dropdown, Menu, Divider,Button } from 'semantic-ui-react'
 
 import api from '../../api';
+import { yearOptions } from './options';
 import './styles.scss';
 
-const yearOptions = [
-  {
-    key:   2016,
-    text: '2016',
-    value: 2016,
-  },
-  {
-    key:  2017,
-    text:'2017',
-    value:2017,
-  },
-  {
-    key:   2018,
-    text: '2018',
-    value: 2018,
-  },
-  {
-    key:  2019,
-    text:'2016',
-    value:2019,
-  },
-  {
-    key:  'All',
-    text:'2016-2019',
-    value:'All',
-  }
-
-]
 class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -48,13 +21,17 @@ class Navigation extends Component {
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
-    if(name === 'hashtags'){
+
+    if (name === 'hashtags'){
       this.getHashtags()
     }
-    console.log(name)
   }
 
   getHashtags = () => {
+    if (this.state.hashtags && this.state.hashtags.length !== 0) {
+      return;
+    }
+
     api.getHashtags()
       .then(response => {
         this.setState({ hashtags: response.data });
@@ -73,6 +50,19 @@ class Navigation extends Component {
     const data = {"date": date}
 
     api.postHashtagsDate(data)
+      .then(response => {
+        console.log(response.data);
+      });
+  }
+
+  postPlots = () => {
+    const data = {
+      "year": "2016",
+      "form": "hashtags",
+      "value": "#fash",
+    };
+
+    api.postPlots(data)
       .then(response => {
         console.log(response.data);
       });
@@ -118,7 +108,11 @@ class Navigation extends Component {
         <Header size= "small">Generated results: </Header>
         <div className="Navigation-options">
           {hashtags.map((hashtag, idx) => (
-            <Button className="resultButton" key={idx} size='mini'   inverted color='grey'>
+            <Button
+              className="resultButton"
+              key={idx} size='mini' inverted color='grey'
+              onClick={this.postPlots}
+            >
               {hashtag[0]}
             </Button>
           ))}

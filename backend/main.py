@@ -66,7 +66,7 @@ def post_plots():
 
     request = {
         year: [2016, 2017, 2018, 2019],
-        form: [hashtag, unigram],
+        form: [hashtags, unigrams],
         value: "#fash"
     }
     """
@@ -79,6 +79,10 @@ def post_plots():
     year = data["year"]
     form = data["form"]
     value = data["value"]
+
+    path = "./files/{}/{}_{}.pkl".format(year, form, year)
+
+    utils.get_plot(path, value)
 
     return jsonify({}), 201
 
