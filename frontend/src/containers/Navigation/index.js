@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Segment, Header, Dropdown, Menu, Divider,Button } from 'semantic-ui-react'
-
+import DatePicker from "react-datepicker";
 import api from '../../api';
 import { yearOptions } from './options';
 import './styles.scss';
+import './date-picker.scss';
 
 class Navigation extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Navigation extends Component {
     this.state = {
       hashtags: [],
       dates: [],
+      startDate: new Date('Feburary 7, 2019')
     }
   }
 
@@ -25,6 +27,13 @@ class Navigation extends Component {
     if (name === 'hashtags'){
       this.getHashtags()
     }
+  }
+
+  handleChangeDate = (date) => {
+    this.setState({
+      startDate: date
+    });
+    console.log("testing date", date)
   }
 
   getHashtags = () => {
@@ -89,7 +98,7 @@ class Navigation extends Component {
                options={yearOptions}
              />
         </React.Fragment>
-        <Header size= "small">Top 50 Trending</Header>
+        <Header  className="mainHeader"  size= "small">Top 50 Trending</Header>
         <Menu className="contentMenu" widths={3} compact size='mini'>
           <Menu.Item name='unigrams' 
                      active={activeItem === 'unigrams'} 
@@ -123,11 +132,16 @@ class Navigation extends Component {
 
     const eventInfo = (
       <div>
-        {dates.map((date, idx) => (
-          <div key={idx}>
-            {date}
-          </div>
-        ))}
+        <Header className="mainHeader" size= "small">Choose a date between</Header>
+        <div className="mainHeader" > 01/01/2016 - 02/07/2019</div> 
+         
+        <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChangeDate}
+            minDate={new Date('January 1, 2016')}
+            maxDate={new Date('Feburary 7, 2019')}
+            showMonthDropdown
+        />
       </div>
     );
 
