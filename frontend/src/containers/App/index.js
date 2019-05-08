@@ -10,32 +10,31 @@ import './styles.scss';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selection: ""
+    }
 
     // this.handleData = this.handleData.bind(this);
   }
 
-  handleDate = (name) => {
-    console.log(name)
-
+  addStateToParent = (name) => {
     this.setState({
       selection:name
     })
   }
 
   render() {
-    console.log("app props", this.props)
-    const { activeItem } = this.state
+    const{selection} = this.state
     return (
       <div
         className="App"
       >
         <Header/>
-        <Selection addStateToParent={this.handleData}/>
+        <Selection addStateToParent={this.addStateToParent}/>
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={4}>
-              <Navigation/>            
+              <Navigation selection={selection}/>            
             </Grid.Column>
             <Grid.Column width={12}>
               <Canvas/>

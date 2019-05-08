@@ -5,13 +5,14 @@ class Selection extends Component {
 	constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {
+    	activeItem:''
+    }
   }
 
   handleItemClick = (e, { name }) => {
   	this.setState({ activeItem: name })
-  	console.log(this.props)
-  	this.props.addStateToParent(this.state.activeItem);
+  	this.props.addStateToParent(name);
   }
   
 
