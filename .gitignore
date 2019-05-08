@@ -1,7 +1,11 @@
+.DS_Store
+
 data/
 result/
+clean_tweets/
+
+**/.ipynb_checkpoints/*
+**/__pycache__/*
 **/*.DS_Store
-.ipynb_checkpoints/*
-clean_tweets/*
 **/*.tar.gz
 **/*.swp
