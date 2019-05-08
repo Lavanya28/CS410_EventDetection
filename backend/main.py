@@ -7,17 +7,21 @@ import utils
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/hashtags", methods=['GET'])
-def get_hashtags():
+@app.route("/get_spike_detection", methods=['POST'])
+def get_spike_detection():
     """
     Get all of the available hashtags
     """
-    hashtags = utils.csv_reader("hashtag_counts.csv")
+    word_type = request.get_json()["word_type"]
+    time_frame = request.get_json()["time_frame"]
+    file_name = "./files/{}/{}_totalcounts_{}.csv".format(time_frame ,word_type,time_frame)
+    print(file_name)
+    hashtags = utils.csv_reader(file_name)
 
     res = {
         "data": hashtags
     }
-
+    # print(word_type,time_frame)
     return jsonify(res), 201
 
 @app.route("/dates", methods=['GET'])
