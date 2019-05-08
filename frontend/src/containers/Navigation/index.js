@@ -133,7 +133,7 @@ class Navigation extends Component {
             <Button
               className="resultButton"
               key={idx} size='mini' inverted color='grey'
-              onClick={this.postPlots}
+              onClick={() => this.postPlots(hashtag[0])}
             >
               {hashtag[0]}
             </Button>
