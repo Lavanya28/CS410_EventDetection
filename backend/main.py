@@ -21,20 +21,43 @@ def get_hashtags():
     return jsonify(res), 201
 
 @app.route("/dates", methods=['GET'])
-def get_dates()
+def get_dates():
     """
     Get all of the available dates
     """
-    dates_file = utils.csv_reader("bucketsperdate.csv")
-    dates = list(dates_file)["date"]
+    dates_file = utils.read_csv("bucketsperdate.csv")
+    dates = list(dates_file["date"])
+
+    res = {
+        "data": dates
+    }
+
+    return jsonify(res), 201
 
 @app.route("/hashtags_date", methods=['POST'])
-def get_hashtags_date():
+def post_hashtags_date():
     """
     Get all of the available hashtags for a certain day
+
+    request = {
+        date
+    }
     """
-    dates_file = utils.csv_reader("bucketsperdate.csv")
-    dates = list(dates_file)["date"]
+    data = json.loads(request.data)
+
+    if "date" not in data:
+        return jsonify({}), 400
+
+    date = data["date"]
+
+    dates_file = utils.read_csv("bucketsperdate.csv")
+    hashtags = list(dates_file.loc[dates_file["date"] == date, "hashtag"])[0]
+
+    res = {
+        "data": hashtags
+    }
+
+    return jsonify(res), 201
 
 @app.route("/plots", methods=['POST'])
 def post_plots():
@@ -42,9 +65,9 @@ def post_plots():
     Create a plot of the spike
 
     request = {
-      year: [2016, 2017, 2018, 2019],
-      form: [hashtag, unigram],
-      value: "#fash"
+        year: [2016, 2017, 2018, 2019],
+        form: [hashtag, unigram],
+        value: "#fash"
     }
     """
     data = json.loads(request.data)

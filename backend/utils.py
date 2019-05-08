@@ -24,6 +24,11 @@ def csv_reader(filename):
 
     return (sorted_result[:50])
 
+def read_csv(filename):
+    df = pd.read_csv(filename)
+
+    return df
+
 def get_plot(path):
     data = pd.read_pickle(path)
     x_ticks = list(data.columns)

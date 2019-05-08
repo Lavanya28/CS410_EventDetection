@@ -38,7 +38,12 @@ class Navigation extends Component {
 
     this.state = {
       hashtags: [],
+      dates: [],
     }
+  }
+
+  componentDidMount() {
+    this.getDates();
   }
 
   handleItemClick = (e, { name }) => {
@@ -54,14 +59,35 @@ class Navigation extends Component {
       .then(response => {
         this.setState({ hashtags: response.data });
       });
-  };
+  }
+
+  getDates = () => {
+    api.getDates()
+      .then(response => {
+        this.setState({ dates: response.data });
+      });
+  }
+
+  getHashtagsDate = () => {
+    const date = "1/16/16"; // as an example
+    const data = {"date": date}
+
+    api.postHashtagsDate(data)
+      .then(response => {
+        console.log(response.data);
+      });
+  }
 
   render() {
     console.log("navigation", this.props.selection)
-    const { hashtags } = this.state;
-    const selection = this.props.selection
-    const { activeItem } = this.state
-    let spikeInfo = (
+    const {
+      hashtags,
+      dates,
+      activeItem,
+    } = this.state;
+    const { selection } = this.props;
+
+    const spikeInfo = (
       <div>
         <React.Fragment>
         <Header className="mainHeader" size= "small">Select Time Frame</Header>            
@@ -92,23 +118,28 @@ class Navigation extends Component {
         <Header size= "small">Generated results: </Header>
         <div className="Navigation-options">
           {hashtags.map((hashtag, idx) => (
-            <Button className="resultButton" id={idx} size='mini'   inverted color='grey'>
+            <Button className="resultButton" key={idx} size='mini'   inverted color='grey'>
               {hashtag[0]}
             </Button>
           ))}
         </div>
         </div>
       </div>
-      
-    )
+    );
+
+    const eventInfo = (
+      <div>
+        {dates.map((date, idx) => (
+          <div key={idx}>
+            {date}
+          </div>
+        ))}
+      </div>
+    );
 
     let navigationInfo = spikeInfo
     if(selection === 'events'){
-      navigationInfo = (
-        <div>
-          events
-        </div>
-      )
+      navigationInfo = eventInfo;
     }else if(selection === 'topics'){
       navigationInfo = (
         <div>
@@ -116,7 +147,7 @@ class Navigation extends Component {
         </div>
       )
     }else{
-      navigationInfo = spikeInfo
+      navigationInfo = spikeInfo;
     }
 
     return (
