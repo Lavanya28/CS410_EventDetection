@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Header, Dropdown, Menu, Divider } from 'semantic-ui-react'
+import { Segment, Header, Dropdown, Menu, Divider,Button } from 'semantic-ui-react'
 
 import api from '../../api';
 import './styles.scss';
@@ -63,20 +63,16 @@ class Navigation extends Component {
     const { activeItem } = this.state
     let spikeInfo = (
       <div>
-        <Header className="mainHeader" size= "medium">Select Time Frame</Header>
-        <div className="time-frame">
-
-            <React.Fragment>
-            {"Choose time  "}
+        <React.Fragment>
+        <Header className="mainHeader" size= "small">Select Time Frame</Header>            
              <Dropdown className="year"
                placeholder='Choose Year'
                // selection
                openOnFocus
                inline
                options={yearOptions}
-             />{' '}
-            </React.Fragment>
-        </div>
+             />
+        </React.Fragment>
         <Header size= "small">Top 50 Trending</Header>
         <Menu className="contentMenu" widths={3} compact size='mini'>
           <Menu.Item name='unigrams' 
@@ -96,9 +92,9 @@ class Navigation extends Component {
         <Header size= "small">Generated results: </Header>
         <div className="Navigation-options">
           {hashtags.map((hashtag, idx) => (
-            <div id={idx}>
+            <Button className="resultButton" id={idx} size='mini'   inverted color='grey'>
               {hashtag[0]}
-            </div>
+            </Button>
           ))}
         </div>
         </div>
