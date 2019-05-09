@@ -15,21 +15,11 @@ Our dataset in general poses two main challenges that make it difficult to detec
 This concept was extended to both unigrams and word-pairs. To improve our results and provide better insight to users about the events trending on a particular day, we take the count of spikes on a per-day basis and provide users with the ability to filter based on individual dates. 
 
 The code is structured as follows: 
-<<<<<<< HEAD
-
 - main.py: contains the backend code to render our algorithms on our dataset files
 - csv_reader: Outputs the top 50 trend based on the file fed as input 
 - thresholding_algo: Computers the array for spikes, average running mean and the standard deviation 
 - plotter: Generates graphs for all the data including spikes
 
-
-=======
->main.py: contains the backend code to render our algorithms on our dataset files\
->csv_reader: Outputs the top 50 trend based on the file fed as input\
->thresholding_algo: Computers the array for spikes, average running mean and the standard deviation\
->plotter: Generates graphs for all the data including spikes\
->>>>>>> bea365ace6efb23137dcfc9513448b53fc0cc72a
-  
 ### 3. Event Detection:  
 
 
