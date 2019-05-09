@@ -17,7 +17,7 @@ This concept was extended to both unigrams and word-pairs. To improve our result
 The code is structured as follows: 
 - main.py: contains the backend code to render our algorithms on our dataset files
 - csv_reader: Outputs the top 50 trend based on the file fed as input 
-- thresholding_algo: Computers the array for spikes, average running mean and the standard deviation 
+- thresholding_algo: Computes the array for spikes, average running mean and the standard deviation, to decide if a data-point is a spike or not we use the formula check for the following two conditions data[i] - moving_average[i-1] > threshold * stdDeviation[i-1] and moving_average[i-1]!=0 and data[i]>(a certain integer based on hashtag/unigram/word). 
 - plotter: Generates graphs for all the data including spikes
 
 ### 3. Event Detection:  
