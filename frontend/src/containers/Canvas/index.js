@@ -36,8 +36,9 @@ class Canvas extends Component {
     );
 
     const topicView = (
-      <div>
-        <img className="Canvas-image" src="topic_graph.jpg" />
+      <div className="Canvas-event">
+        <img className="Canvas-image1" src="topic_graph.jpg" />
+        <img className="Canvas-image2" src="topics.jpg" />
       </div>
     );
 

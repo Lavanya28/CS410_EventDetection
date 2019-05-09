@@ -181,7 +181,19 @@ class Navigation extends Component {
     }else if(selection === 'topics'){
       navigationInfo = (
         <div>
-          topics
+           <Header className="mainHeader" size= "small"> Examples of topics regarding fashion week in 2018 </Header>
+          <div>Paris Fashion Week Men's: 
+              <p><b>January 17 – 21, 2018</b></p>
+          </div>
+          <div>New York Fashion Week Spring/Summer 2020: 
+              <p><b>September 6 – 14, 2018</b></p>
+          </div>
+          <div>London Fashion Week Spring/Summer 2020:
+              <p><b>September 14 – 18, 2018</b></p>
+          </div>
+          <div>Milan Fashion Week Spring/Summer 2020:
+              <p><b>September 19 – 25, 2018</b></p>
+          </div>
         </div>
       )
     }else{
