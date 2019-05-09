@@ -14,12 +14,13 @@ class App extends Component {
       selection: "",
       path: "",
       title: "",
+      hashtags: [],
     }
   }
 
   addStateToParent = (name) => {
     this.setState({
-      selection:name
+      selection: name
     })
   }
 
@@ -27,11 +28,16 @@ class App extends Component {
     this.setState({ path, title });
   }
 
+  changeHashtags = (hashtags) => {
+    this.setState({ hashtags });
+  }
+
   render() {
     const{
       selection,
       path,
       title,
+      hashtags,
     } = this.state;
 
     return (
@@ -43,10 +49,19 @@ class App extends Component {
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={4}>
-              <Navigation selection={selection} changePlot={this.changePlot} />
+              <Navigation
+                selection={selection}
+                changePlot={this.changePlot}
+                changeHashtags={this.changeHashtags}
+              />
             </Grid.Column>
             <Grid.Column width={12}>
-              <Canvas path={path} title={title} />
+              <Canvas
+                path={path}
+                title={title}
+                hashtags={hashtags}
+                selection={selection}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>

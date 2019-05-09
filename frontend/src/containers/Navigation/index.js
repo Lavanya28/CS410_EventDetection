@@ -71,12 +71,15 @@ class Navigation extends Component {
 
   getHashtagsDate = (date) => {
     // const date = "1/16/16"; // as an example
+    const {
+      changeHashtags,
+    } = this.props;
+
     const data = {"date": date}
-    console.log("testing getHashtagDate", data)
+
     api.postHashtagsDate(data)
       .then(response => {
-        console.log(response.data);
-        this.setState({eventHastags:response.data })
+        changeHashtags(response.data);
       });
   }
 

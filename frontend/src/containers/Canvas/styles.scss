@@ -4,6 +4,16 @@
     margin: 10px;
 }
 
+.Canvas-event {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Canvas-hashtag {
+    padding-right: 15px;
+}
+
 .Canvas-title {
     font-size: 32px;
 }

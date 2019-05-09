@@ -1,4 +1,5 @@
 import json
+import numpy as np
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 
@@ -69,10 +70,10 @@ def post_hashtags_date():
     month = int(month)
     year = year[2:]
     date = "/".join([str(day), str(month), str(year)])
-    print(date)
 
     dates_file = utils.read_csv("bucketsperdate.csv")
-    hashtags = list(dates_file.loc[dates_file["date"] == date, "hashtag"])[0]
+    hashtags = dates_file.loc[dates_file["date"] == date]["hashtag"].iloc[0]
+    hashtags = [x[1:-1] for x in hashtags[1:-1].split(", ")]
 
     res = {
         "data": hashtags
