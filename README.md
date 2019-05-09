@@ -85,7 +85,7 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 
 
 ### 6. Team Member Contribution
--Mark Craft -  Topic Modeling,  Backend APIs, Frontend
--Qinglin Chen -  Data cleaning, Vectorization, Backend APIs, Frontend
+-Mark Craft -  Topic Modeling,  Backend APIs, Frontend  
+-Qinglin Chen -  Data cleaning, Vectorization, Backend APIs, Frontend  
 -Lavanya Piramanayagam - Backend modules, Spike detection  
--Kavjit Durairaj - Event detection, Spike detection  
+-Kavjit Durairaj - Data Prepration, Event detection, Spike detection  
