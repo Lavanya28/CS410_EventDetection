@@ -6,12 +6,16 @@
 }
 
 .Canvas-event {
-	padding:5px;
-	overflow-y:auto;
+    padding:5px;
+    overflow-y:auto;
     height:100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.Canvas-image {
+    width: 100%;
 }
 
 .Canvas-hashtag {
@@ -19,13 +23,12 @@
     padding-left: 8px;
     padding-bottom: 4px;
     padding-top: 4px;
-    
 }
 
 .Canvas-title {
     font-size: 32px;
 }
 .eventLabel{
-	margin:2px !important;
-	padding:2px;
+    margin:2px !important;
+    padding:2px;
 }

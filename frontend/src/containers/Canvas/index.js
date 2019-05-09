@@ -18,7 +18,7 @@ class Canvas extends Component {
         <div className="Canvas-title-container">
           <div className="Canvas-title">{title}</div>
         </div>
-        <img className="Canvas-image" key={path} src={path} alt={path} />
+        <img key={path} src={path} alt={path} />
       </div>
     );
 
@@ -37,6 +37,7 @@ class Canvas extends Component {
 
     const topicView = (
       <div>
+        <img className="Canvas-image" src="topic_graph.jpg" />
       </div>
     );
 
