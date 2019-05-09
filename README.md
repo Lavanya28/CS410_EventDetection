@@ -2,6 +2,12 @@
 
 ##  Documentation of the usage of the software
 
+### Requirements
+
+- python 3.7.2
+- node
+- npm
+
 ### Running the web interface
 - cd ```./backend```
   - unzip ```./backend/files.zip```
@@ -62,10 +68,12 @@ The code is structured as follows:
 ### 4. Event Detection:  
 To gain better insight into the data, we aggregate the counts of spikes on a per-date basis. This would give users the ability to view trending events on a particular date. For example, if the users picks the date 19th May 2018, he would be able to view hastags and words that correlate with the royal wedding.  
 
-
-
 ### 5. Topic Modeling: 
+An alternative method for doing event detection is through the use of topic models as presented in Using Topic Modeling and Similarity Thresholds to Detect Events by Keane et al.  To do this, for every day (D days) in our dataset, we create a topic model with K topics (20 in our case).  We then take the cosine similarity for each topic in each day with every other topic in other days.  For every topic we do this, we only keep the topic corresponding to the highest cosine similarity.  After this is computed, we will have a DxKx(D-1)x(K-1) values.  We can take the cosine similarities corresponding to each day to get a graph where a large enough peak means that there is an event.  We use lowess smoothing to smooth out the graph to see the events for every topic.
 
+The code is in
+- ./backend/topic_models.py: For the topic model code in a python file
+- ./backend/topic_models.ipynb: For the same topic model code but in a jupyter notebook with some example outputs
 
 ### 6. Web Interface:
 

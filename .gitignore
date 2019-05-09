@@ -11,3 +11,4 @@ input/
 **/*.tar.gz
 **/*.swp
 **/*.png
+**/__MACOSX/*
