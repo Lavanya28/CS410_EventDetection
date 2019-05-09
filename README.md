@@ -12,9 +12,9 @@
 
 ## Approaches
 ### 1. Data preprocessing 
-```python3 ./data_cleaning.py```
+```python3 ./data_cleaning.py``` 
 In this section we implement cleaning of the twitter data scraped from 1000 different fashion accounts each consisting of 3200 tweets (Twitter API can only crawl the most 3200 tweets for each account). We also want to remove some of the extra text that usually   retweets.  For example, we remove the “RT” that appears before the text as well as the screen name of the user that is being retweeted
-In addition to cleaning the data, we separate the hashtags from the main text of the tweet.
+In addition to cleaning the data, we separate the hashtags from the main text of the tweet. 
 After removing the hashtags, we remove the non-ascii characters in the text such as emojis
 We also remove single characters, punctuations, and the stopword.  Since the stopwords provided by nltk is not comprehensive, we also add some of our own extra stop words.After cleaning the text, we use the lancaster stemmer to stem each of the words. 
 At the end, we save the cleaned text into other csv files. This includes removal of urls, hashtags, stopwords, punctuations and emoticons. Following which we implement stemming and lemmetization on the cleaned tweets.  
@@ -31,8 +31,14 @@ The code is structured as follows:
   - remove non English words,non-ascii characters,stopwords(for the stopwords, in addition to NLTK stopwords, we also created a more comprehensive stop word list) ```
   - lancasting and stemming 
 
+The code generates a csv file inside ```.\clean_tweets\``` for each account, in the csv it contains 
+  - clean date for each tweet
+  - clean text for each tweet
+  - extracted hashtags for each tweet
+
+
 ### 2. Vectorization
-In this section, we implemented the vectorization the 
+In this section, we implemented the vectorization of on the cleaned data 
 
 <!-- ## The first step of data preparation
 ### data_cleaning.py: 
@@ -79,11 +85,8 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 - Event Dectection data:
   ```./backend/bucketsperdate.csv```
 
-
-
-
 ### 6. Team Member Contribution
--Mark Craft -  Topic Modeling,  Backend APIs, Frontend  
--Qinglin Chen -  Data cleaning, Vectorization, Backend APIs, Frontend  
--Lavanya Piramanayagam - Backend modules, Spike detection  
--Kavjit Durairaj - Data Prepration, Event detection, Spike detection  
+- Mark Craft -  Topic Modeling,  Backend APIs, Frontend  
+- Qinglin Chen -  Data cleaning, Vectorization, Backend APIs, Frontend  
+- Lavanya Piramanayagam - Backend modules, Spike detection  
+- Kavjit Durairaj - Data Prepration, Event detection, Spike detection  
