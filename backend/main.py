@@ -14,11 +14,20 @@ def get_spike_detection():
     """
     word_type = request.get_json()["word_type"]
     time_frame = request.get_json()["time_frame"]
+
+    print(word_type)
+    if word_type == "unigrams":
+        word_type = "unigramwords"
+    elif word_type == "wordpairs":
+        word_type = "wordpair"
+
     if time_frame == 'All':
         file_name = '{}_counts.csv'.format(word_type)
     print(time_frame)
-    file_name = "./files/{}/{}_totalcounts_{}.csv".format(time_frame ,word_type,time_frame)
+
+    file_name = "./files/{}/{}_totalcounts_{}.csv".format(time_frame, word_type, time_frame)
     print(file_name)
+
     data = utils.csv_reader(file_name)
 
     res = {
@@ -72,7 +81,7 @@ def post_plots():
 
     request = {
         year: [2016, 2017, 2018, 2019],
-        form: [hashtags, unigrams],
+        form: [hashtags, unigrams, wordpairs],
         value: "#fash"
     }
     """
@@ -86,11 +95,29 @@ def post_plots():
     form = data["form"]
     value = data["value"]
 
+    if form == "wordpairs":
+        form = "wordpair"
+
     path = "./files/{}/{}_{}.pkl".format(year, form, year)
 
-    utils.get_plot(path, value)
+    title = value
+    if form == "hashtags":
+        title = title[1:]
 
-    return jsonify({}), 201
+    fig_path = utils.get_plot(path, value, title)
+    fig_path = "plots/" + fig_path.split("/")[-1]
+
+    if form == "hashtags":
+        title = "#" + title
+
+    res = {
+        "path": fig_path,
+        "title": title
+    }
+
+    print(res)
+
+    return jsonify(res), 201
 
 @app.route("/")
 def index():

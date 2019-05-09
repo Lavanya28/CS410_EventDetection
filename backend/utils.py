@@ -29,7 +29,7 @@ def read_csv(filename):
 
     return df
 
-def get_plot(path, value):
+def get_plot(path, value, title):
     data = pd.read_pickle(path)
 
     x_ticks = list(data.columns)
@@ -41,12 +41,11 @@ def get_plot(path, value):
     influence = 0.5
     result = thresholding_algo(y, lag=lag, threshold=threshold, influence=influence)
     
-    create_plot(value, x_ticks_dates,y,result)
+    return create_plot(value, x_ticks_dates, y, result, title)
 
-def create_plot(value, x_ticks_dates,y,result):
+def create_plot(value, x_ticks_dates, y, result, title):
     threshold = 4
 
-    print(len(x_ticks_dates))
     tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
              (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
              (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
@@ -54,50 +53,28 @@ def create_plot(value, x_ticks_dates,y,result):
              (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
 
     tableau20 = [(c[0]/255., c[1]/255., c[2]/255.) for c in tableau20]
-    
-    #plt.subplot(211)
-    ax = plt.subplot(111)    
-    ax.spines["top"].set_visible(False)    
-    ax.spines["bottom"].set_visible(False)    
-    ax.spines["right"].set_visible(False)    
+
+    ax = plt.subplot(111)
+    plt.gcf().set_size_inches(11, 5)
+    ax.spines["top"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
+    ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
 
     plt.plot(x_ticks_dates, y, color=tableau20[1])
     plt.plot(x_ticks_dates,
                result["avgFilter"], color=tableau20[0], lw=2)
-    # plt.plot(x_ticks_dates,
-    #            result["avgFilter"] + threshold * result["stdFilter"], color="green", lw=2)
-    # plt.plot(x_ticks_dates,
-    #            result["avgFilter"] - threshold * result["stdFilter"], color="green", lw=2)
     plt.step(x_ticks_dates, result["signals"] * np.max(y), color=tableau20[2], lw=2)
-    #plt.gcf().autofmt_xdate()
-    plt.xticks(range(0, len(x_ticks_dates), 30), [x for x in range(0, len(x_ticks_dates), 30)])
-    
-    """
-    dates = {}
-    for i in range(len(x_ticks_dates)):
-        year, month, day = x_ticks_dates[i].split("-")
 
-        if year not in dates:
-            dates[year] = {}
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    plt.xticks(range(0, len(x_ticks_dates), 30), months)
 
-        if month in dates[year]:
-            x_ticks_dates[i] = ""
-        else:
-            x_ticks_dates[i] = "{}, {}".format(month, year)
-            dates[year][month] = 1
-    """
-    
-    """
-    plt.subplot(212)
-    plt.step(x_ticks_dates, result["signals"], color="red", lw=2)
-    plt.ylim(-1.5, 1.5)
-    plt.gcf().autofmt_xdate()
-    #plt.savefig(value + '.png')
-    """
-    plt.savefig("../frontend/public/plots/fash.png")
+    fig_path = "../frontend/public/plots/{}.png".format(title)
+
+    plt.savefig(fig_path, bbox_inches="tight")
     plt.close()
-    return 
+
+    return fig_path
 
 def thresholding_algo(y, lag, threshold, influence):
     signals = np.zeros(len(y))

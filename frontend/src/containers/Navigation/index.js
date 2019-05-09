@@ -13,9 +13,9 @@ class Navigation extends Component {
     this.state = {
       spikeWords: [],
       dates: [],
-      year:2016,
-      startDate: new Date('Feburary 7, 2019'),
-      activeItem:""
+      year: 2016,
+      startDate: new Date('February 7, 2019'),
+      activeItem: "",
     }
   }
 
@@ -26,12 +26,11 @@ class Navigation extends Component {
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
     this.getspikeWords(name,this.state.year)
-
   }
 
   handleDropdownDateChange = (e,{ value })=>{
     this.setState({year:value})
-    if(this.state.activeItem != ''){
+    if (this.state.activeItem !== ''){
       this.getspikeWords(this.state.activeItem,value)
     }
    
@@ -50,6 +49,7 @@ class Navigation extends Component {
       word_type:name,
       time_frame:year
     }
+
     console.log(post_request)
     api.postSpikeDetection(post_request)
       .then(response => {
@@ -74,21 +74,28 @@ class Navigation extends Component {
       });
   }
 
-  postPlots = () => {
+  postPlots = (value) => {
+    const {
+      year,
+      activeItem,
+    } = this.state;
+    const {
+      changePlot,
+    } = this.props;
+
     const data = {
-      "year": "2016",
-      "form": "hashtags",
-      "value": "#fash",
+      "year": year,
+      "form": activeItem,
+      "value": value,
     };
 
     api.postPlots(data)
       .then(response => {
-        console.log(response.data);
+        changePlot(response.path, response.title);
       });
   }
 
   render() {
-    // console.log("navigation", this.props.selection)
     const {
       spikeWords,
       dates,
@@ -96,7 +103,6 @@ class Navigation extends Component {
       year
     } = this.state;
     const { selection } = this.props;
-    console.log(hashtags);
 
     const spikeInfo = (
       <div>
@@ -153,13 +159,14 @@ class Navigation extends Component {
             selected={this.state.startDate}
             onChange={this.handleChangeDate}
             minDate={new Date('January 1, 2016')}
-            maxDate={new Date('Feburary 7, 2019')}
+            maxDate={new Date('February 7, 2019')}
             showMonthDropdown
         />
       </div>
     );
 
     let navigationInfo = spikeInfo
+
     if(selection === 'events'){
       navigationInfo = eventInfo;
     }else if(selection === 'topics'){

@@ -11,7 +11,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selection: ""
+      selection: "",
+      path: "",
+      title: "",
     }
   }
 
@@ -21,8 +23,17 @@ class App extends Component {
     })
   }
 
+  changePlot = (path, title) => {
+    this.setState({ path, title });
+  }
+
   render() {
-    const{selection} = this.state
+    const{
+      selection,
+      path,
+      title,
+    } = this.state;
+
     return (
       <div
         className="App"
@@ -32,10 +43,10 @@ class App extends Component {
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={4}>
-              <Navigation selection={selection}/>            
+              <Navigation selection={selection} changePlot={this.changePlot} />
             </Grid.Column>
             <Grid.Column width={12}>
-              <Canvas/>
+              <Canvas path={path} title={title} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
