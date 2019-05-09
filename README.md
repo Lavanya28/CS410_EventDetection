@@ -24,7 +24,7 @@ The code is structured as follows:
 - plotter: Generates graphs for all the data including spikes
 
 ### 3. Event Detection:  
-To gain better insight into the data, we aggregate the counts of spikes on a per-date basis. This would give users the ability to view trending events on a particular date. For example, if the users picks the date 19th May 2018, he would be able to view hastags and words that correlate with the royal wedding.  
+To gain better insight into the data, we aggregate the counts of spikes on a per-date basis. This would give users the ability to view trending events on a particular date. 
 
 
 ### 4. Topic Modeling: 
@@ -49,3 +49,11 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 #### APIs
 main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
 - 
+
+
+
+### 6. Team Member Contribution
+-Mark Craft - 
+-Qinglin Chen - 
+-Lavanya Piramanayagam - Back end, Spike detection
+-Kavjit Durairaj - Event detection, Spike detection
