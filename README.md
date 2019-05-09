@@ -36,11 +36,13 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 
 #### Data
 - Spike Dectection data:
-  - for each years hashtags, unigrams, word pairs are inside
+  - for each year and all years' hashtags, unigrams, word pairs are inside
     ```./backend/files```
     - For example: For 2016's hashtags:
       ```./backend/files/2016/hashtags_totalcounts_2016.csv```
-  - for all years from 2016 - 2019, hashtags, unigrams, word pairs are inside
-  	- For example: For 2016-2019's hashtags:
-  	  ```./backend/hashtags_counts.csv```
+- Event Dectection data:
+  ```./backend/bucketsperdate.csv```
 
+#### APIs
+main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
+- 
