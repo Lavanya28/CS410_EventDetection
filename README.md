@@ -1,4 +1,15 @@
 # CS410_EventDetection
+
+##  Documentation of the usage of the software
+
+### Running the web interface
+- cd ```./backend```
+  - unzip ```./backend/files.zip```
+  - run the backend: ```python3 main.py```
+- cd ```./frontend```
+  - ```npm install```
+  - ```npm start```
+
 ## Approaches
 ### 1. Data preprocessing 
 ```python3 ./data_cleaning.py```
@@ -67,16 +78,6 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 
 
 
-
-##  Documentation of the usage of the software
-
-### Running the web interface
-- cd ```./backend```
-  - unzip ```./backend/files.zip```
-  - run the backend: ```python3 main.py```
-- cd ```./frontend```
-  - ```npm install```
-  - ```npm start```
 
 ### APIs: 
 
