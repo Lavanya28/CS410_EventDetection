@@ -44,13 +44,22 @@ The code generates a csv file inside ```.\clean_tweets\``` for each account, in 
 
 
 ### 2. Vectorization
-In this section, we implemented the vectorization of on the cleaned data 
+In this section, we implemented the vectorization of on the cleaned data. 
+- First, it will count
+  - ```get_hashtag_counter``` hastags based on date for each account
+  - ```get_bow_counter``` BOWs based on date for each account
+  - ```get_word_pair_counter```word pair (every combination of words in the tweet) for each account.
+  - The data are generated inside:
+	  -  ```./results/BOWS/```
+	  -  ```./results/hashtags/```
+	  - ```./results/word_pairs/```
+- Second, it will do a time series combination:
+  - ```sum_two_nested_counter```: merge all the counts for hastags, BOWS and word pairs of all 1000 accounts into a JSON format sorted by the date. This create volumes of hastags, BOWS and word pairs of top 1000 accounts in times series order.
+  -The data are generated inside:
+	  -  ```./results/hashtags_volumes.json/```
+	  -  ```./results/unigram_volumes.json/```
+	  ```./results/word_pair_volumes.json/```
 
-<!-- ## The first step of data preparation
-### data_cleaning.py: 
-####>  
-####> lemmetize and stem each word
-###  -->
 
 ### 3. Spike Detection:
 Since we are only able to get the past 3200 tweets, we may not get older tweets for all of the 1000 users.  Thus, we will try to concentrate on only looking at the spikes for spike detection in the more recent years.
