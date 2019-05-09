@@ -21,6 +21,7 @@ The code is structured as follows:
 - plotter: Generates graphs for all the data including spikes
 
 ### 3. Event Detection:  
+To gain better insight into the data, we aggregate the counts of spikes on a per-date basis. This would give users the ability to view trending events on a particular date. 
 
 
 ### 4. Topic Modeling: 
