@@ -1,6 +1,8 @@
 # CS410_EventDetection
 ## Approaches
 ### 1. Data preprocessing 
+In this section we implement cleaning of the twitter data scraped from 1000 different fashion accounts each consisting of 3200 tweets. This included removal of urls, hashtags, stopwords, punctuations and emoticons.  
+The code located at ```./data_cleaning.py``` is structured as follows:\
 
 
 <!-- ## The first step of data preparation
