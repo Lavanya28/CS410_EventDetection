@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react'
+import { Segment,Label } from 'semantic-ui-react'
 import './styles.scss';
 
 class Canvas extends Component {
@@ -26,7 +26,10 @@ class Canvas extends Component {
       <div className="Canvas-event">
         {hashtags.map((hashtag, idx) => (
           <div key={idx} className="Canvas-hashtag">
-            {hashtag}
+          	<Label className="eventLabel" as='a' tag size="small">
+       			{hashtag}
+      		</Label>
+            
           </div>
         ))}
       </div>
