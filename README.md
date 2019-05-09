@@ -73,6 +73,12 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 - Vectorization:  
 
 ### Running the web interface
+- cd ```./backend```
+  - unzip ```./backend/files.zip```
+  - run the backend: ```python3 main.py```
+- cd ```./frontend```
+  - ```npm install```
+  - ```npm start```
 
 ### APIs: 
 
