@@ -16,9 +16,9 @@ This concept was extended to both unigrams and word-pairs. To improve our result
 
 The code is structured as follows: 
 >main.py: contains the backend code to render our algorithms on our dataset files\
->csv_reader: Outputs the top 50 trend based on the file fed as input 
->thresholding_algo: Computers the array for spikes, average running mean and the standard deviation 
->plotter: Generates graphs for all the data including spikes
+>csv_reader: Outputs the top 50 trend based on the file fed as input\
+>thresholding_algo: Computers the array for spikes, average running mean and the standard deviation\ 
+>plotter: Generates graphs for all the data including spikes\
   
 ### 3. Event Detection:  
 
