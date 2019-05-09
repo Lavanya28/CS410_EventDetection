@@ -45,18 +45,35 @@ def get_plot(path, value):
 
 def create_plot(value, x_ticks_dates,y,result):
     threshold = 4
-    
-    plt.subplot(211)
 
-    plt.plot(x_ticks_dates, y)
+    print(len(x_ticks_dates))
+    tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+    tableau20 = [(c[0]/255., c[1]/255., c[2]/255.) for c in tableau20]
+    
+    #plt.subplot(211)
+    ax = plt.subplot(111)    
+    ax.spines["top"].set_visible(False)    
+    ax.spines["bottom"].set_visible(False)    
+    ax.spines["right"].set_visible(False)    
+    ax.spines["left"].set_visible(False)
+
+    plt.plot(x_ticks_dates, y, color=tableau20[1])
     plt.plot(x_ticks_dates,
-               result["avgFilter"], color="cyan", lw=2)
+               result["avgFilter"], color=tableau20[0], lw=2)
     # plt.plot(x_ticks_dates,
     #            result["avgFilter"] + threshold * result["stdFilter"], color="green", lw=2)
     # plt.plot(x_ticks_dates,
     #            result["avgFilter"] - threshold * result["stdFilter"], color="green", lw=2)
-    plt.gcf().autofmt_xdate()
+    plt.step(x_ticks_dates, result["signals"] * np.max(y), color=tableau20[2], lw=2)
+    #plt.gcf().autofmt_xdate()
+    plt.xticks(range(0, len(x_ticks_dates), 30), [x for x in range(0, len(x_ticks_dates), 30)])
     
+    """
     dates = {}
     for i in range(len(x_ticks_dates)):
         year, month, day = x_ticks_dates[i].split("-")
@@ -69,13 +86,16 @@ def create_plot(value, x_ticks_dates,y,result):
         else:
             x_ticks_dates[i] = "{}, {}".format(month, year)
             dates[year][month] = 1
+    """
     
+    """
     plt.subplot(212)
     plt.step(x_ticks_dates, result["signals"], color="red", lw=2)
     plt.ylim(-1.5, 1.5)
     plt.gcf().autofmt_xdate()
     #plt.savefig(value + '.png')
-    plt.savefig("../frontend/public/fash.png")
+    """
+    plt.savefig("../frontend/public/plots/fash.png")
     plt.close()
     return 
 

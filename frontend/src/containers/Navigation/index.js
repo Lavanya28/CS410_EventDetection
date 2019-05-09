@@ -93,6 +93,7 @@ class Navigation extends Component {
       time,
     } = this.state;
     const { selection } = this.props;
+    console.log(hashtags);
 
     const spikeInfo = (
       <div>
