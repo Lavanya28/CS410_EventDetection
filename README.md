@@ -87,7 +87,11 @@ The code is in
 ### 6. Web Interface:
 
 ### Frontend:
-
+- we built in react.js which contains the following components:
+  - Header
+  - Selection
+  - Canvas
+  - Navigation
 
 ### backend(APIS)
 main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
