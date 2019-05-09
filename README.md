@@ -13,27 +13,30 @@
 ## Approaches
 ### 1. Data preprocessing 
 ```python3 ./data_cleaning.py```
-In this section we implement cleaning of the twitter data scraped from 1000 different fashion accounts each consisting of 3200 tweets (Twitter API can only crawl the most 3200 tweets for each account). 
-- ```def clean_dates(dates)``` in the original file, we have the date and time of the tweet. Since we only care about the date, we did this preprocessing step to remove the time.
-- 
-We also want to remove some of the extra text that usually   retweets.  For example, we remove the “RT” that appears before the text as well as the screen name of the user that is being retweeted
+In this section we implement cleaning of the twitter data scraped from 1000 different fashion accounts each consisting of 3200 tweets (Twitter API can only crawl the most 3200 tweets for each account). We also want to remove some of the extra text that usually   retweets.  For example, we remove the “RT” that appears before the text as well as the screen name of the user that is being retweeted
 In addition to cleaning the data, we separate the hashtags from the main text of the tweet.
 After removing the hashtags, we remove the non-ascii characters in the text such as emojis
-We also remove single characters, punctuations, and the stopword.  Since the stopwords provided by nltk is not comprehensive, we also add some of our own extra stop words.
-After cleaning the text, we use the lancaster stemmer to stem each of the words.
-At the end, we save the cleaned text into other csv files
+We also remove single characters, punctuations, and the stopword.  Since the stopwords provided by nltk is not comprehensive, we also add some of our own extra stop words.After cleaning the text, we use the lancaster stemmer to stem each of the words. 
+At the end, we save the cleaned text into other csv files. This includes removal of urls, hashtags, stopwords, punctuations and emoticons. Following which we implement stemming and lemmetization on the cleaned tweets.  
 
+The code located at ```./data_cleaning.py``` contains the functions that implement each of the removal and cleaning step.
 
-This includes removal of urls, hashtags, stopwords, punctuations and emoticons. Following which we implement stemming and lemmetization on the cleaned tweets.   
-The code located at ```./data_cleaning.py``` contains the functions that implement each of the removal and cleaning step 
-
+The code is structured as follows: 
+- ```clean_dates``` in the original file, we have the date and time of the tweet. Since we only care about the date, we did this preprocessing step to remove the time.
+- ```clean_tweets```: 
+  - nltk.tokenize.RegexpTokenizer(r'\w+|@\w+|#\w+')``` (remove punctuation and non @ symbols)
+- ```get_hastags```: extract hashtags and remove from the text 
+- ```remove_urls```: remove urls
+- ```word_preprocess```: 
+  - remove non English words,non-ascii characters,stopwords(for the stopwords, in addition to NLTK stopwords, we also created a more comprehensive stop word list) ```
+  - lancasting and stemming 
 
 ### 2. Vectorization
 In this section, we implemented the vectorization the 
 
 <!-- ## The first step of data preparation
 ### data_cleaning.py: 
-####> remove urls, hashtags, stopwords, punctuation. 
+####>  
 ####> lemmetize and stem each word
 ###  -->
 
@@ -63,7 +66,7 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 ### Frontend:
 
 
-### backend
+### backend(APIS)
 main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
 
 
@@ -75,11 +78,6 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
       ```./backend/files/2016/hashtags_totalcounts_2016.csv```
 - Event Dectection data:
   ```./backend/bucketsperdate.csv```
-
-
-
-
-### APIs: 
 
 
 
