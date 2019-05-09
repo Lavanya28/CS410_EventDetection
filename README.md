@@ -53,7 +53,7 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 
 
 ### 6. Team Member Contribution
--Mark Craft - 
--Qinglin Chen - 
--Lavanya Piramanayagam - Back end, Spike detection
--Kavjit Durairaj - Event detection, Spike detection
+-Mark Craft -  
+-Qinglin Chen -   
+-Lavanya Piramanayagam - Back end, Spike detection  
+-Kavjit Durairaj - Event detection, Spike detection  
