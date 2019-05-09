@@ -11,10 +11,11 @@ class Navigation extends Component {
     super(props);
 
     this.state = {
-      hashtags: [],
+      spikeWords: [],
       dates: [],
+      year:2016,
       startDate: new Date('Feburary 7, 2019'),
-      time: "2016",
+      activeItem:""
     }
   }
 
@@ -24,33 +25,35 @@ class Navigation extends Component {
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
+    this.getspikeWords(name,this.state.year)
 
-    if (name === 'hashtags'){
-      this.getHashtags()
+  }
+
+  handleDropdownDateChange = (e,{ value })=>{
+    this.setState({year:value})
+    if(this.state.activeItem != ''){
+      this.getspikeWords(this.state.activeItem,value)
     }
+   
   }
 
   handleChangeDate = (date) => {
     this.setState({
       startDate: date
     });
-    console.log("testing date", date)
+    // console.log("testing date", date)
   }
 
-  handleChangeTime = (e, data) => {
-    const { value } = data;
-
-    this.setState({ time: value });
-  }
-
-  getHashtags = () => {
-    if (this.state.hashtags && this.state.hashtags.length !== 0) {
-      return;
+  getspikeWords = (name, year) => {
+    let post_request = {}
+    post_request = {
+      word_type:name,
+      time_frame:year
     }
-
-    api.getHashtags()
+    console.log(post_request)
+    api.postSpikeDetection(post_request)
       .then(response => {
-        this.setState({ hashtags: response.data });
+        this.setState({ spikeWords: response.data });
       });
   }
 
@@ -85,12 +88,12 @@ class Navigation extends Component {
   }
 
   render() {
-    console.log("navigation", this.props.selection)
+    // console.log("navigation", this.props.selection)
     const {
-      hashtags,
+      spikeWords,
       dates,
       activeItem,
-      time,
+      year
     } = this.state;
     const { selection } = this.props;
     console.log(hashtags);
@@ -104,9 +107,9 @@ class Navigation extends Component {
                // selection
                openOnFocus
                inline
+               value={year}
+               onChange={this.handleDropdownDateChange}
                options={yearOptions}
-               value={time}
-               onChange={this.handleChangeTime}
              />
         </React.Fragment>
         <Header  className="mainHeader"  size= "small">Top 50 Trending</Header>
@@ -127,7 +130,7 @@ class Navigation extends Component {
         <div className="Generated">
         <Header size= "small">Generated results: </Header>
         <div className="Navigation-options">
-          {hashtags.map((hashtag, idx) => (
+          {spikeWords.map((hashtag, idx) => (
             <Button
               className="resultButton"
               key={idx} size='mini' inverted color='grey'

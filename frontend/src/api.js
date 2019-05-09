@@ -20,5 +20,9 @@ export default {
     return api.post('/plots', data)
       .then(r => r.data);
   },
+  postSpikeDetection(data){
+    return api.post('/get_spike_detection', data)
+      .then(r => r.data);
+  }
 };
 

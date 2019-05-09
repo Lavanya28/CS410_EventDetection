@@ -14,14 +14,16 @@ def get_spike_detection():
     """
     word_type = request.get_json()["word_type"]
     time_frame = request.get_json()["time_frame"]
+    if time_frame == 'All':
+        file_name = '{}_counts.csv'.format(word_type)
+    print(time_frame)
     file_name = "./files/{}/{}_totalcounts_{}.csv".format(time_frame ,word_type,time_frame)
     print(file_name)
-    hashtags = utils.csv_reader(file_name)
+    data = utils.csv_reader(file_name)
 
     res = {
-        "data": hashtags
+        "data": data
     }
-    # print(word_type,time_frame)
     return jsonify(res), 201
 
 @app.route("/dates", methods=['GET'])
