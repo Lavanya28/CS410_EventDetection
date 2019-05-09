@@ -28,9 +28,18 @@ The code is structured as follows:
 
 ## Web Interface
 
-### Data
-
 ### Frontend
 
 
 ### Backend
+
+#### Data
+- Spike Dectection data:
+  - for each years hashtags, unigrams, word pairs are inside
+    ```./backend/files```
+    - For example: For 2016's hashtags:
+      ```./backend/files/2016/hashtags_totalcounts_2016.csv```
+  - for all years from 2016 - 2019, hashtags, unigrams, word pairs are inside
+  	- For example: For 2016-2019's hashtags:
+  	  ```./backend/hashtags_counts.csv```
+
