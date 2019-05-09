@@ -3,6 +3,7 @@
 data/
 result/
 clean_tweets/
+input/
 
 **/.ipynb_checkpoints/*
 **/__pycache__/*
