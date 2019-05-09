@@ -50,9 +50,11 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 ### Frontend:
 
 
-### Backend:
+### backend
+main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
 
-#### Data:
+
+### Data:
 - Spike Dectection data:
   - for each year and all years' hashtags, unigrams, word pairs are inside
     ```./backend/files```
@@ -60,10 +62,8 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
       ```./backend/files/2016/hashtags_totalcounts_2016.csv```
 - Event Dectection data:
   ```./backend/bucketsperdate.csv```
-<<<<<<< HEAD
 
-##### APIs
-main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
+
 
 
 ##  Documentation of the usage of the software
@@ -74,13 +74,8 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 
 ### Running the web interface
 
+### APIs: 
 
-
-=======
-
-#### APIs: 
-main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py``` 
->>>>>>> 3719b02218adb27fb9b7e075c043a2b9ea443333
 
 
 
