@@ -102,7 +102,7 @@ def post_plots():
         title = title[1:]
 
     fig_path = utils.get_plot(path, value, title)
-    fig_path = "plots/" + fig_path.split("/")[-1]
+    fig_path = fig_path.split("/")[-1]
 
     if form == "hashtags":
         title = "#" + title

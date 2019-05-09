@@ -69,7 +69,7 @@ def create_plot(value, x_ticks_dates, y, result, title):
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     plt.xticks(range(0, len(x_ticks_dates), 30), months)
 
-    fig_path = "../frontend/public/plots/{}.png".format(title)
+    fig_path = "../frontend/public/{}.png".format(title)
 
     plt.savefig(fig_path, bbox_inches="tight")
     plt.close()
