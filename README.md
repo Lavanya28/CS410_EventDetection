@@ -68,10 +68,6 @@ main.py: handles all the APIs and communicate the data with frontend. The code i
 
 ##  Documentation of the usage of the software
 
-### Usage of previous code
-- Data preprocessing: ```python3 ./data_cleaning.py```
-- Vectorization:  
-
 ### Running the web interface
 - cd ```./backend```
   - unzip ```./backend/files.zip```
