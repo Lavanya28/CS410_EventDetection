@@ -1,5 +1,5 @@
 # CS410_EventDetection
-## Approaches
+## Overview of the function of the code and Documentation of the Implementation
 ### 1. Data preprocessing 
 ```python3 ./data_cleaning.py```
 In this section we implement cleaning of the twitter data scraped from 1000 different fashion accounts each consisting of 3200 tweets (Twitter API can only crawl the most 3200 tweets for each account). 
@@ -45,14 +45,21 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 ### 5. Topic Modeling: 
 
 
-## Web Interface
 
-### Frontend
+##  Documentation of the usage of the software
+
+### Usage of previous code
+- Data preprocessing: ```python3 ./data_cleaning.py```
+- Vectorization:  
+
+### Web Interface
+
+#### Frontend
 
 
-### Backend
+#### Backend
 
-#### Data
+##### Data
 - Spike Dectection data:
   - for each year and all years' hashtags, unigrams, word pairs are inside
     ```./backend/files```
@@ -61,13 +68,13 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 - Event Dectection data:
   ```./backend/bucketsperdate.csv```
 
-#### APIs
+##### APIs
 main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
 - 
 
 
 
-### 6. Team Member Contribution
+## Team Members Contribution
 -Mark Craft -  Topic Modeling,  Backend APIs, Frontend
 -Qinglin Chen -  Data cleaning, Vectorization, Backend APIs, Frontend
 -Lavanya Piramanayagam - Backend, Spike detection  
