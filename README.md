@@ -36,8 +36,10 @@ The code is structured as follows:
 - thresholding_algo: Computes the array for spikes, average running mean and the standard deviation, to decide if a data-point is a spike or not we use the formula check for the following two conditions data[i] - moving_average[i-1] > threshold * stdDeviation[i-1] and moving_average[i-1]!=0 and data[i]>(a certain integer based on hashtag/unigram/word). 
 - plotter: Generates graphs for all the data including spikes
 
+
 ### 4. Event Detection:  
 To gain better insight into the data, we aggregate the counts of spikes on a per-date basis. This would give users the ability to view trending events on a particular date. For example, if the users picks the date 19th May 2018, he would be able to view hastags and words that correlate with the royal wedding.  
+
 
 
 ### 5. Topic Modeling: 
@@ -62,3 +64,11 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 #### APIs
 main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
 - 
+
+
+
+### 6. Team Member Contribution
+-Mark Craft -  
+-Qinglin Chen -   
+-Lavanya Piramanayagam - Back end, Spike detection  
+-Kavjit Durairaj - Event detection, Spike detection  
