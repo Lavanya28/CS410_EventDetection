@@ -58,7 +58,11 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
     - For example: For 2016's hashtags:
       ```./backend/files/2016/hashtags_totalcounts_2016.csv```
 - Event Dectection data:
-  ```./backend/bucketsperdate.csv``` 
+  ```./backend/bucketsperdate.csv```
+
+##### APIs
+main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
+
 
 ##  Documentation of the usage of the software
 
@@ -69,9 +73,7 @@ To gain better insight into the data, we aggregate the counts of spikes on a per
 ### Running the web interface
 
 
-##### APIs
-main.py: handles all the APIs and communicate the data with frontend. The code is in```./backend/main.py```
-- 
+
 
 
 
