@@ -16,6 +16,7 @@ class Navigation extends Component {
       year: 2016,
       startDate: new Date('February 7, 2019'),
       activeItem: "",
+      eventHastags:[]
     }
   }
 
@@ -40,7 +41,11 @@ class Navigation extends Component {
     this.setState({
       startDate: date
     });
-    // console.log("testing date", date)
+
+    console.log("testing date", date)
+    var n = date.toLocaleDateString();
+    this.getHashtagsDate(n)
+
   }
 
   getspikeWords = (name, year) => {
@@ -64,13 +69,14 @@ class Navigation extends Component {
       });
   }
 
-  getHashtagsDate = () => {
-    const date = "1/16/16"; // as an example
+  getHashtagsDate = (date) => {
+    // const date = "1/16/16"; // as an example
     const data = {"date": date}
-
+    console.log("testing getHashtagDate", data)
     api.postHashtagsDate(data)
       .then(response => {
         console.log(response.data);
+        this.setState({eventHastags:response.data })
       });
   }
 
@@ -153,12 +159,12 @@ class Navigation extends Component {
     const eventInfo = (
       <div>
         <Header className="mainHeader" size= "small">Choose a date between</Header>
-        <div className="mainHeader" > 01/01/2016 - 02/07/2019</div> 
+        <div className="mainHeader" > 01/16/2016 - 02/07/2019</div> 
          
         <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChangeDate}
-            minDate={new Date('January 1, 2016')}
+            minDate={new Date('January 16, 2016')}
             maxDate={new Date('February 7, 2019')}
             showMonthDropdown
         />

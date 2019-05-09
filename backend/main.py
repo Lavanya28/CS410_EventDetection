@@ -64,6 +64,12 @@ def post_hashtags_date():
         return jsonify({}), 400
 
     date = data["date"]
+    day, month, year = date.split("/")
+    day = int(day)
+    month = int(month)
+    year = year[2:]
+    date = "/".join([str(day), str(month), str(year)])
+    print(date)
 
     dates_file = utils.read_csv("bucketsperdate.csv")
     hashtags = list(dates_file.loc[dates_file["date"] == date, "hashtag"])[0]
